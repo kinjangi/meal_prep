@@ -1,0 +1,363 @@
+/* ── AnalyticsPage — glass chart cards ────────────────────────────────── */
+
+.analytics-page {
+  animation: fadeIn 0.4s ease-in-out;
+  padding-bottom: var(--spacing-12);
+}
+
+.analytics-header {
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.analytics-title {
+  color: var(--color-text-main);
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-1);
+  letter-spacing: -0.04em;
+}
+
+.analytics-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.plan-source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-card-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+/* Empty State */
+.analytics-empty-state {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-12) var(--spacing-6);
+  text-align: center;
+  max-width: 580px;
+  margin: var(--spacing-12) auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--spacing-4);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-card-border);
+}
+
+.empty-icon-wrap svg {
+  color: var(--color-accent);
+  width: 36px;
+  height: 36px;
+}
+
+.analytics-empty-state h3 {
+  font-size: 1.3rem;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-2);
+}
+
+.analytics-empty-state p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-6);
+  line-height: 1.6;
+}
+
+.btn-generate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(224, 122, 95, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-generate-link:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.4);
+}
+
+/* Analytics Grid */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-6);
+}
+
+/* Chart cards — glass panels */
+.chart-card {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.chart-card-full   { grid-column: span 12; }
+.chart-card-half   { grid-column: span 6; }
+.chart-card-third  { grid-column: span 4; }
+
+.chart-card-header {
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.chart-card-header h3 {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.chart-card-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.chart-container-box {
+  width: 100%;
+  height: 280px;
+  position: relative;
+}
+
+/* Dietary Restrictions Card — glass */
+.dietary-summary-card {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  grid-column: span 12;
+}
+
+.dietary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.dietary-header h3 {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dietary-pills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.restriction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-success-dim);
+  color: var(--color-success);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.restriction-badge-none {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-card-border);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.edit-prefs-link {
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.edit-prefs-link:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+/* Donut charts */
+.donut-comparison-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+  padding: var(--spacing-2) 0;
+}
+
+.donut-subchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.donut-chart-box {
+  width: 170px;
+  height: 170px;
+}
+
+.donut-label-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.donut-comparison-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 190px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-border);
+}
+
+.macro-legend-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.macro-legend-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.macro-legend-color-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.macro-legend-comparison {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* Chart tooltip — glass */
+.custom-chart-tooltip {
+  background: rgba(17, 24, 39, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--color-text-main);
+}
+
+.custom-chart-tooltip .tooltip-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--color-text-main);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 4px;
+}
+
+.custom-chart-tooltip .tooltip-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 3px 0;
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .chart-card-half { grid-column: span 12; }
+}
+
+@media (max-width: 600px) {
+  .chart-card-full,
+  .chart-card-half,
+  .chart-card-third { grid-column: span 12; }
+  .chart-container-box { height: 240px; }
+  .donut-comparison-wrap { flex-direction: column; }
+}

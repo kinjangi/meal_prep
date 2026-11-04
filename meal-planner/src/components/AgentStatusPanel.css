@@ -1,0 +1,122 @@
+/* ── AgentStatusPanel ─────────────────────────────────────────────────── */
+
+.agent-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+  background: rgba(124, 92, 252, 0.07);
+  border: 1px solid rgba(124, 92, 252, 0.22);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ── Steps list ── */
+.agent-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.agent-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── pending ── */
+.agent-step--pending {
+  color: rgba(122, 134, 153, 0.5);
+  opacity: 0.6;
+}
+
+/* ── active ── */
+.agent-step--active {
+  color: var(--color-ai, #7C5CFC);
+  font-weight: 600;
+  filter: drop-shadow(0 0 6px rgba(124, 92, 252, 0.5));
+  animation: agentStepGlow 2s ease-in-out infinite;
+}
+
+@keyframes agentStepGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(124, 92, 252, 0.4)); }
+  50%       { filter: drop-shadow(0 0 10px rgba(124, 92, 252, 0.75)); }
+}
+
+/* ── done ── */
+.agent-step--done {
+  color: var(--color-success, #34D399);
+  opacity: 0.85;
+}
+
+/* ── icon slot ── */
+.agent-step__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Active pulsing dot */
+.agent-active-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-ai, #7C5CFC);
+  animation: agentDotPulse 1.2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(124, 92, 252, 0.7);
+}
+
+@keyframes agentDotPulse {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0   rgba(124, 92, 252, 0.7); }
+  60%  { transform: scale(1.25); box-shadow: 0 0 0 8px rgba(124, 92, 252, 0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(124, 92, 252, 0); }
+}
+
+/* Pending dot */
+.agent-pending-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(122, 134, 153, 0.3);
+  border: 1px solid rgba(122, 134, 153, 0.25);
+}
+
+/* ── thinking text ── */
+.agent-thinking-text {
+  margin: 4px 0 0 28px;
+  font-size: 0.78rem;
+  color: rgba(124, 92, 252, 0.7);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+/* blinking cursor after thinking text */
+.agent-thinking-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 11px;
+  background: var(--color-ai, #7C5CFC);
+  border-radius: 1px;
+  animation: agentCursorBlink 1s step-end infinite;
+  flex-shrink: 0;
+}
+
+@keyframes agentCursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

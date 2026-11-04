@@ -1,0 +1,146 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   MEAL PREP — 2026 Design System
+   Dark theme · Glassmorphism · Dual-accent (AI vs. UI)
+   ──────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Background & Surface ── */
+  --color-bg:             #0D1117;      /* near-black base canvas             */
+  --color-bg-raised:      #111827;      /* slightly lifted bg (sidebar areas) */
+
+  /* Glass cards: semi-transparent panels layered over the dark bg */
+  --color-card-bg:        rgba(255, 255, 255, 0.05);
+  --color-card-bg-hover:  rgba(255, 255, 255, 0.08);
+  --color-card-border:    rgba(255, 255, 255, 0.09);
+
+  /* ── Text ── (WCAG AA on dark bg) */
+  --color-text-main:      #E8EDF5;      /* off-white, primary text            */
+  --color-text-muted:     #7A8699;      /* steel gray, secondary / captions   */
+  --color-text-dimmed:    #3D4A5C;      /* very muted, placeholders           */
+
+  /* ── AI Accent — Electric Violet ──────────────────────────────────────
+     RESERVED exclusively for AI-driven surfaces:
+       • AI Smart Plan button
+       • AI reasoning / strategy callout
+       • AI Food Analyzer result card & loading spinner
+       • AI badge/pulse dot
+     DO NOT use this anywhere else.                                          */
+  --color-ai:             #7C5CFC;      /* electric violet — "this is the AI" */
+  --color-ai-dim:         rgba(124, 92, 252, 0.15);
+  --color-ai-glow:        rgba(124, 92, 252, 0.35);
+  --color-ai-border:      rgba(124, 92, 252, 0.35);
+
+  /* ── UI Accent — Muted Coral ───────────────────────────────────────────
+     For regular interactive elements:
+       • Non-AI action buttons, nav active state, form highlights,
+         today-badge, meal-type labels, accent SVG icons               */
+  --color-accent:         #E07A5F;      /* coral — familiar but calm on dark  */
+  --color-accent-hover:   #CC6950;
+  --color-accent-dim:     rgba(224, 122, 95, 0.15);
+  --color-accent-border:  rgba(224, 122, 95, 0.30);
+
+  /* ── Semantic / Status ── */
+  --color-success:        #34D399;      /* emerald green                      */
+  --color-success-dim:    rgba(52, 211, 153, 0.12);
+  --color-warning:        #FBBF24;      /* amber                              */
+  --color-warning-dim:    rgba(251, 191, 36, 0.12);
+  --color-warning-bg:     rgba(251, 191, 36, 0.08);
+  --color-error:          #F87171;      /* soft red                           */
+  --color-error-dim:      rgba(248, 113, 113, 0.12);
+
+  /* ── Legacy aliases (keeps existing component code working) ── */
+  --color-primary:        var(--color-accent);
+  --color-primary-hover:  var(--color-accent-hover);
+  --color-secondary:      rgba(255, 255, 255, 0.04);
+  --color-secondary-hover:rgba(255, 255, 255, 0.07);
+  --color-border:         var(--color-card-border);
+
+  /* ── Spacing ── (unchanged) */
+  --spacing-1:  4px;
+  --spacing-2:  8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-5:  20px;
+  --spacing-6:  24px;
+  --spacing-8:  32px;
+  --spacing-12: 48px;
+
+  /* ── Radii ── */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* ── Shadows (dark-mode: use tinted dark, not greenish) ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5), 0 12px 32px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6), 0 24px 56px rgba(0,0,0,0.4);
+  --shadow-ai: 0 0 0 1px var(--color-ai-border), 0 8px 32px var(--color-ai-glow);
+
+  /* ── Glass backdrop ── */
+  --glass-blur: blur(16px) saturate(180%);
+
+  /* ── Typography ────────────────────────────────────────────────────────
+     Space Grotesk: distinctive, geometric, confident — ideal for section
+       headings where Fraunces felt too editorial/warm.
+     Inter: neutral, highly legible at small sizes, the industry standard
+       for dense data UIs — exactly right for macros, labels, form fields.  */
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg);
+  /* Subtle radial glow at top-left for depth, not a flat black void */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(124, 92, 252, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(224, 122, 95, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Headings: calmer, more spacious hierarchy ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text-main);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Glass utility (can be added to any panel) ── */
+.glass {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-card-border);
+}
+
+/* ── AI surface marker — applies the AI accent treatment ── */
+.ai-surface {
+  background: var(--color-ai-dim);
+  border-color: var(--color-ai-border);
+}

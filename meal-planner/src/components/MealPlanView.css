@@ -1,0 +1,519 @@
+﻿.meal-plan-view {
+  margin-top: var(--spacing-6);
+  text-align: left;
+}
+
+/* Warning card */
+.plan-warning-card {
+  background: var(--color-warning-dim);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  color: var(--color-warning);
+  margin-bottom: var(--spacing-6);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Plan header */
+.meal-plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.meal-plan-header h2 {
+  color: var(--color-text-main);
+  font-size: 1.6rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  letter-spacing: -0.03em;
+}
+
+.meal-plan-header h2 svg {
+  color: var(--color-accent);
+  width: 24px;
+  height: 24px;
+}
+
+.plan-mode-badge-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* AI mode badge — uses AI violet */
+.badge-ai-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-ai-dim);
+  color: var(--color-ai);
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--color-ai-border);
+  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+}
+
+/* AI pulse dot — violet */
+.badge-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-ai);
+  box-shadow: 0 0 0 rgba(124, 92, 252, 0.4);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0   rgba(124, 92, 252, 0.7); }
+  70%  { transform: scale(1.2);  box-shadow: 0 0 0 6px rgba(124, 92, 252, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0   rgba(124, 92, 252, 0); }
+}
+
+.badge-quick-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--color-card-border);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ── Button group ── */
+.plan-actions-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+/* Standard (non-AI) generate button — glass + coral */
+.quick-generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-body);
+}
+
+.quick-generate-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--color-accent-border);
+  color: var(--color-text-main);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-generate-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── AI generate button — exclusively violet ─────────────────────────── */
+.ai-generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--spacing-3) var(--spacing-5);
+  background: linear-gradient(135deg, #7C5CFC 0%, #5B3FD4 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(124, 92, 252, 0.5);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(124, 92, 252, 0.3);
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-generate-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: 0.5s;
+}
+
+.ai-generate-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.ai-generate-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(124, 92, 252, 0.45);
+  background: linear-gradient(135deg, #8D6FFD 0%, #6B4FE4 100%);
+}
+
+.ai-generate-btn:disabled {
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.7;
+}
+
+.ai-generate-btn.loading {
+  background: linear-gradient(135deg, #5B3FD4 0%, #3D2A9E 100%);
+}
+
+/* AI spinner — violet */
+.ai-btn-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Fallback Alert */
+.ai-fallback-alert {
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-left: 3px solid var(--color-warning);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3) var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-warning);
+  box-shadow: var(--shadow-sm);
+  animation: slideDown 0.3s ease-out;
+}
+
+.alert-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.alert-icon {
+  font-size: 1.1rem;
+}
+
+.alert-dismiss-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.alert-dismiss-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-main);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* AI Strategy Callout - collapsible panel */
+.ai-strategy-callout {
+  background: var(--color-ai-dim);
+  border: 1px solid var(--color-ai-border);
+  border-left: 4px solid var(--color-ai);
+  border-radius: var(--radius-md);
+  padding: 0;
+  margin-bottom: var(--spacing-6);
+  box-shadow: var(--shadow-ai);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: slideUpFade 0.4s ease-out;
+}
+
+.ai-strategy-toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  transition: background 0.15s;
+}
+
+.ai-strategy-toggle:hover {
+  background: rgba(124, 92, 252, 0.06);
+}
+
+.ai-strategy-chevron {
+  color: var(--color-ai);
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.ai-strategy-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0 20px 16px 20px;
+  font-style: italic;
+  opacity: 0.88;
+  animation: fadeTextIn 0.25s ease-out;
+}
+
+@keyframes fadeTextIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* AgentStatusPanel now handles AI loading UI. Old classes kept as stubs. */
+.ai-loading-container { display: none; }
+.ai-loading-pulsar    { display: none; }
+.pulsar-core          { display: none; }
+.pulsar-ring          { display: none; }
+.ai-loading-heading   { display: none; }
+.ai-loading-caption   { display: none; }
+
+/* Empty state */
+.meal-plan-empty {
+  margin-top: var(--spacing-8);
+  padding: var(--spacing-8);
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ── Day cards — glass ── */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-6);
+  transition: opacity 0.3s ease;
+}
+
+.days-grid.dimmed {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.day-card {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+@keyframes slideUpFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.day-name {
+  color: var(--color-text-main);
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.today-card {
+  border-color: var(--color-accent-border);
+  box-shadow: 0 0 0 1px var(--color-accent-border), var(--shadow-sm);
+}
+
+.today-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  background: var(--color-accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.07em;
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+.meals-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  flex-grow: 1;
+  margin-bottom: var(--spacing-6);
+}
+
+.meal-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-type {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 3px;
+  font-family: var(--font-body);
+}
+
+.recipe-name {
+  color: var(--color-text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Day macros strip */
+.day-macros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--spacing-3) var(--spacing-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: var(--color-text-main);
+  align-items: center;
+}
+
+.macro-badge {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.macro-badge.calories {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.macro-badge.calories::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.macro-badge.calories.good {
+  color: var(--color-success);
+  border-color: rgba(52, 211, 153, 0.25);
+  background: rgba(52, 211, 153, 0.07);
+}
+.macro-badge.calories.good::before { background-color: var(--color-success); }
+
+.macro-badge.calories.warn {
+  color: var(--color-warning);
+  border-color: rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.07);
+}
+.macro-badge.calories.warn::before { background-color: var(--color-warning); }
+
+.macro-badge.protein {
+  color: #fb7185;
+  border-color: rgba(251, 113, 133, 0.25);
+  background: rgba(251, 113, 133, 0.07);
+}
+
+.macro-badge.carbs {
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.25);
+  background: rgba(251, 146, 60, 0.07);
+}
+
+.macro-badge.fat {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.07);
+}
+
+@media (max-width: 600px) {
+  .meal-plan-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .plan-actions-group {
+    width: 100%;
+  }
+  .quick-generate-btn, .ai-generate-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .days-grid {
+    grid-template-columns: 1fr;
+  }
+}

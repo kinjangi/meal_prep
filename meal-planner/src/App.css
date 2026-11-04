@@ -1,0 +1,304 @@
+.app-container {
+  min-height: 100vh;
+  padding: var(--spacing-4);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-8) 0 0 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-3);
+  letter-spacing: -0.04em;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* Preferences Form — glass card */
+.preferences-form {
+  background: var(--color-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  border: 1px solid var(--color-card-border);
+  margin-top: var(--spacing-6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Thin AI-accent top bar to signal this form uses AI */
+.preferences-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-ai), var(--color-accent));
+}
+
+.form-section {
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: var(--spacing-4);
+  padding-bottom: 0;
+}
+
+.form-section h3 {
+  font-size: 1.15rem;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-weight: 600;
+}
+
+.form-section h3 svg {
+  color: var(--color-accent);
+  width: 20px;
+  height: 20px;
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-card-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.checkbox-label:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--color-text-main);
+  transform: translateY(-1px);
+}
+
+.checkbox-label:has(input:checked) {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent-border);
+  color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent-border);
+}
+
+.checkbox-label input[type="checkbox"] {
+  accent-color: var(--color-accent);
+  width: 15px;
+  height: 15px;
+}
+
+/* Inputs */
+.input-group, .macro-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.macro-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.text-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.text-input {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-card-border);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.95rem;
+  font-weight: 400;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+}
+
+.text-input::placeholder {
+  color: var(--color-text-dimmed);
+}
+
+.text-input:focus {
+  border-color: var(--color-accent-border);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 3px var(--color-accent-dim);
+}
+
+.text-input.small {
+  width: 120px;
+}
+
+.search-input {
+  width: 100%;
+  margin-bottom: var(--spacing-4);
+}
+
+/* Validation */
+.validation-error {
+  display: inline-block;
+  background: var(--color-error-dim);
+  color: var(--color-error);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: var(--spacing-2);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* Ingredient List */
+.ingredients-list {
+  max-height: 260px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+}
+
+.ingredient-label {
+  margin: 0;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.ingredient-label:has(input:checked) {
+  background: var(--color-success-dim);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: var(--color-success);
+}
+
+.ingredient-label input[type="checkbox"]:checked {
+  accent-color: var(--color-success);
+}
+
+.unit-hint {
+  color: var(--color-text-dimmed);
+  font-size: 0.78rem;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.empty-state {
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: var(--spacing-2);
+}
+
+/* Button — standard UI action */
+.submit-btn {
+  width: 100%;
+  padding: var(--spacing-4);
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(224, 122, 95, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--color-text-dimmed);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .ingredients-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: var(--spacing-2);
+}
+
+.page-header h2 {
+  font-size: 1.75rem;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-2);
+  letter-spacing: -0.03em;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.animation-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
